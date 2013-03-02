@@ -20,8 +20,8 @@
 setup_args = dict(
     name='django_lint',
     packages=[
-        'DjangoLint',
-        'DjangoLint.AstCheckers',
+        'django_lint',
+        'django_lint.AstCheckers',
     ],
     author='Chris Lamb',
     author_email='chris@chris-lamb.co.uk',
@@ -30,7 +30,7 @@ setup_args = dict(
 try:
     from setuptools import setup
     setup_args['entry_points'] = {
-        "console_scripts" : ['django-lint = DjangoLint.script:main',]
+        "console_scripts" : ['django-lint = django_lint.script:main',]
     }
     setup_args['install_requires'] = ['pylint']
 except ImportError:

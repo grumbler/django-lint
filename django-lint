@@ -19,7 +19,7 @@
 
 import sys
 
-from DjangoLint import script
+from django_lint import script
 
 if __name__ == "__main__":
     sys.exit(script.main())

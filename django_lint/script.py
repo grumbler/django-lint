@@ -27,19 +27,20 @@ from DjangoLint import AstCheckers
 
 
 def djlint(rc_file, targets, errors_only=False, reporter=None, exit=False):
-    targets = [os.path.abspath(t) for t in targets]
+    paths = [os.path.abspath(t) for t in targets]
 
-    for target in targets:
-        if not os.path.exists(target):
+    for path, target in zip(paths, targets):
+        if not os.path.exists(path):
             try:
                 # Is target a module?
-                x = __import__(args[0], locals(), globals(), [], -1)
-                target = sys.modules[args[0]].__path__[0]
+                x = __import__(target, locals(), globals(), [], -1)
+                target = sys.modules[target].__path__[0]
             except:
+                print "can't import module %s" % target
                 pass
 
         if not os.path.exists(target):
-            raise parser.error(
+            raise Exception(
                 "The specified target (%r) does not exist" \
                 % target
             )
@@ -70,13 +71,6 @@ def djlint(rc_file, targets, errors_only=False, reporter=None, exit=False):
         return 1
 
     linter = lint.PyLinter(reporter=reporter, pylintrc=rc_file)
-    #linter.set_option('reports', options.report)
-    #linter.set_option('output-format', options.outputformat)
-
-    if options.pylint:
-        checkers.initialize(linter)
-        for msg in ('C0111', 'C0301'):
-            linter.disable(msg)
 
     AstCheckers.register(linter)
 
@@ -88,7 +82,6 @@ def djlint(rc_file, targets, errors_only=False, reporter=None, exit=False):
     linter.check(targets)
 
     return linter.msg_status
-
 
 
 def main():
