@@ -23,7 +23,7 @@ import sys
 from pylint import checkers, lint
 from optparse import OptionParser
 
-from DjangoLint import AstCheckers
+from django_lint import AstCheckers
 
 
 def djlint(rc_file, targets, errors_only=False, reporter=None, exit=False):
