@@ -147,6 +147,7 @@ class ModelFieldsChecker(BaseChecker):
                 self.add_message('W6000', node=node, args=(assname,))
 
             if val.name == 'CharField' and \
+                    options['max_length'] != astng.YES and \
                     options['max_length'] > self.config.max_charfield_length:
                 self.add_message('W6007', node=node, args=(
                     assname,
