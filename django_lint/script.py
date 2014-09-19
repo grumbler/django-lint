@@ -59,7 +59,7 @@ def djlint(rc_file, targets, errors_only=False, reporter=None, exit=False):
             path = os.path.dirname(path)
 
             if path == '/':
-                raise parser.error(
+                raise Exception(
                     "The specified target (%r) does not appear to be part of a " \
                     "Django application" % target
                 )

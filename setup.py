@@ -25,7 +25,7 @@ setup_args = dict(
     ],
     author='Chris Lamb',
     author_email='chris@chris-lamb.co.uk',
-    version='0.0.2',
+    version='0.0.3',
 )
 
 try:
