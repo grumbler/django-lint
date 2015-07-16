@@ -18,14 +18,14 @@
 
 from logilab import astng
 
-from pylint.interfaces import IASTNGChecker
+from pylint.interfaces import IAstroidChecker
 from pylint.checkers import BaseChecker
 from pylint.checkers.utils import safe_infer
 
 from utils import is_model
 
 class ModelFieldsChecker(BaseChecker):
-    __implements__ = IASTNGChecker
+    __implements__ = IAstroidChecker
 
     name = 'django_model_fields'
     msgs = {

@@ -18,12 +18,12 @@
 
 from logilab import astng
 
-from pylint.interfaces import IASTNGChecker
+from pylint.interfaces import IAstroidChecker
 from pylint.checkers import BaseChecker
 from pylint.checkers.utils import safe_infer
 
 class SettingsChecker(BaseChecker):
-    __implements__ = IASTNGChecker
+    __implements__ = IAstroidChecker
 
     name = 'django_settings_checker'
     msgs = {

@@ -20,7 +20,7 @@ import os.path
 
 from logilab import astng
 
-from pylint.interfaces import IASTNGChecker
+from pylint.interfaces import IAstroidChecker
 from pylint.checkers import BaseChecker
 from pylint.checkers.utils import safe_infer
 
@@ -39,7 +39,7 @@ except ImportError:
             yield []
 
 class ModelMethodsChecker(BaseChecker):
-    __implements__ = IASTNGChecker
+    __implements__ = IAstroidChecker
 
     name = 'django_model_models'
     msgs = {
